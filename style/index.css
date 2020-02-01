@@ -1,0 +1,14 @@
+.login.container {
+    background-image: url("../image/chemistry.png");
+}
+
+a {
+    padding: 0.5rem 1rem;
+    font-size: 17px;
+
+    color: #808080;
+}
+
+a:hover {
+    color: #00000F;
+}
