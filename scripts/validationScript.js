@@ -1,14 +1,20 @@
 
-var inputs = document.getElementsByClassName("auth-input");
-// inputs[0].setAttribute("type", "text"); // Wrong in the instructions of the task!
-inputs[0].required = true;
+var inputs = document.getElementsByClassName("input");
+
+for (let i = 0; i < 3; ++i) {
+	inputs[i].required = true;
+}
+
+function showValidationMessage() {
+	document.getElementById("validation").style.display = "block";
+}
 
 function validationFunc() {
 	let insertedEmail = inputs[0].value;
 	let insertedPassword = inputs[2].value;
 	let checkValidity;
 
-	document.getElementById("errors").innerHTML = "";
+	document.getElementById("validation").innerHTML = "";
 
 	let isEmailCorrect = checkValidityEmail(insertedEmail);
 	let isPasswordCorrect = checkValidityPassword(insertedPassword);
@@ -17,6 +23,8 @@ function validationFunc() {
 
 	if (checkValidity) { // window with message for successfull registration! Is this ??
 		alert("The registration is made successfully!");
+	} else {
+		showValidationMessage();
 	}
 
 	return checkValidity;
@@ -26,7 +34,7 @@ function checkValidityPassword(insertedPassword) {
 	let smallLetter = false;
 	let capitalLetter = false;
 	let specialLetter = false;
-	let errorMessageField = document.getElementById("errors");
+	let errorMessageField = document.getElementById("validation");
 
 	for (char of insertedPassword) {
 		if (char >= 'a' && char <= 'z') {
@@ -59,7 +67,7 @@ function checkValidityPassword(insertedPassword) {
 function checkValidityEmail(insertedEmail) {
 	let standardCharacterMails = false;
 	let isThereDot = false;
-	let errorElement = document.getElementById("errors");
+	let errorElement = document.getElementById("validation");
 
 	for (char of insertedEmail) {
 		if (char == '@') {

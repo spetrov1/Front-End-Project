@@ -11,6 +11,29 @@
         .container {
             background-image: url("image/chemistry.png");
         }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+        }
+
+        #validation {
+            border: 1px solid;
+            margin: 10px 0px;
+            padding: 15px 10px 15px 50px;
+            background-repeat: no-repeat;
+            background-position: 10px center;
+
+            display: none;
+        }
+
+        #validation {
+            background-color: #FFFF00;
+            background-image: url('https://i.imgur.com/GnyDvKN.png');
+            font-weight: bold;
+            border-radius: 1rem;
+            color: #D63301;
+        }
     </style>
 </head>
 
@@ -19,21 +42,22 @@
     <div class="register container">
         <h2 class="register header"> Регистрация </h2>
 
-        <p id="errors"> Bla bla </p>
-
         <form onsubmit="return validationFunc();" class="register form" action="post" action="#" id="login-form">
             <label for="input username">User name: </label>
-            <input class="auth-input input username" id="input username" type="text" placeholder="Type your username(nickname)">
+            <input class="input username" id="input username" type="text" placeholder="Type your username(nickname)">
 
             <label for="input email">Email address: </label>
-            <input class="auth-input input email" id="input email" type="email" placeholder="Type email...">
+            <input class="input email" id="input email" type="email" placeholder="Type email...">
 
             <label for="input password">Password: </label>
-            <input class="auth-input input password" id="input password" type="password" placeholder="Type password...">
+            <input class="input password" id="input password" type="password" placeholder="Type password...">
 
 
             <input type="Submit" value="Register">
         </form>
+
+        <p id="validation"></p>
+
     </div>
 
     <script src="scripts/validationScript.js"></script>
