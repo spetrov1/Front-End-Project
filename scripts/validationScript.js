@@ -1,27 +1,23 @@
 
 var inputs = document.getElementsByClassName("input");
 
-for (let i = 0; i < 3; ++i) {
-	inputs[i].required = true;
-}
-
 function showValidationMessage() {
 	document.getElementById("validation").style.display = "block";
 }
 
 function validationFunc() {
-	let insertedEmail = inputs[0].value;
+	let insertedUserName = inputs[0].value;
 	let insertedPassword = inputs[2].value;
 	let checkValidity;
 
 	document.getElementById("validation").innerHTML = "";
 
-	let isEmailCorrect = checkValidityEmail(insertedEmail);
 	let isPasswordCorrect = checkValidityPassword(insertedPassword);
+	let isUserNameCorrect = checkValidityUserName(insertedUserName);
 
-	checkValidity = isEmailCorrect && isPasswordCorrect;
+	checkValidity = isPasswordCorrect && isUserNameCorrect;
 
-	if (checkValidity) { // window with message for successfull registration! Is this ??
+	if (checkValidity) {
 		alert("The registration is made successfully!");
 	} else {
 		showValidationMessage();
@@ -64,6 +60,7 @@ function checkValidityPassword(insertedPassword) {
 		specialLetter && insertedPassword.length >= 6;
 }
 
+/* Not used in project */
 function checkValidityEmail(insertedEmail) {
 	let standardCharacterMails = false;
 	let isThereDot = false;
@@ -89,4 +86,20 @@ function checkValidityEmail(insertedEmail) {
 	}
 
 	return standardCharacterMails && isThereDot && insertedEmail.length >= 5;
+}
+
+function checkValidityUserName(insertedUserName) {
+	let errorElement = document.getElementById("validation");
+
+	let hasMinSizeLimit = insertedUserName.length > 5;
+	let hasMaxSizeLimit = insertedUserName.length < 20;
+
+	if (!hasMinSizeLimit) {
+		errorElement.innerHTML += "User name has to be minimum 5 character long <BR>";
+	}
+	if (!hasMaxSizeLimit) {
+		errorElement.innerHTML += "User name has to be maximum 20 charactes long! <BR>"
+	}
+
+	return hasMinSizeLimit && hasMaxSizeLimit;
 }
